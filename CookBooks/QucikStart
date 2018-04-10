@@ -1,0 +1,22 @@
+Install the Chef development kit: https://downloads.chef.io/chefdk/.
+
+Generate a cookbook:
+
+$ chef generate app first_cookbook
+where first_cookbook is an arbitrary cookbook name.
+
+Change into the first_cookbook directory.
+
+Update the cookbooks/first_cookbook/recipes/default.rb recipe in the generated cookbook to contain:
+
+file "#{ENV['HOME']}/test.txt" do
+  content 'This file was created by Chef!'
+end
+Run the chef-client using the default.rb recipe:
+
+$ chef-client --local-mode --override-runlist first_cookbook
+This will create a file named test.txt at the home path on your machine. Open that file and it will say This file was created by Chef!.
+
+Delete the file, run the chef-client again, and Chef will put the file back.
+Change the string in the file, run the chef-client again, and Chef will make the string in the file the same as the string in the recipe.
+Change the string in the recipe, run the chef-client again, and Chef will update that string to be the same as the one in the recipe.
