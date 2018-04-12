@@ -1,0 +1,10 @@
+Install a package using local file
+apt_package 'jwhois' do
+  action :install
+  source '/path/to/jwhois.deb'
+end
+-------------
+Install a package using package manager
+apt_package 'name of package' do
+  action :install
+end
