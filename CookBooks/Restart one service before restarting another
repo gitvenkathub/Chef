@@ -1,0 +1,5 @@
+
+service `nginx` do
+  action :restart
+  notifies :restart, `service[php-fpm]`, :before
+end
