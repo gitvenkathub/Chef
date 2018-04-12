@@ -8,3 +8,10 @@ Install a package using package manager
 apt_package 'name of package' do
   action :install
 end
+----------------
+Installing multiple packages with versions:
+package %w(package1 package2) do
+  version [ '1.3.4-2', '4.3.6-1']
+end
+---------------------
+action :upgrade
